@@ -1,0 +1,45 @@
+{
+  "executionRoleArn": "{{ tfstate `aws_iam_role.ecs_task_execution_role_main_provisional_sshable_container_test.arn` }}",
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "{{ tfstate `aws_cloudwatch_log_group.ecs_cluster_main_provisional_sshable_container_test.name` }}",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "default"
+        }
+      },
+      "portMappings": [],
+      "command": [],
+      "cpu": 256,
+      "environment": [],
+      "secrets": [],
+      "dnsServers": [],
+      "mountPoints": [],
+      "workingDirectory": "/",
+      "dockerSecurityOptions": [],
+      "memory": 512,
+      "volumesFrom": [],
+      "image": "{{ tfstate `aws_ecr_repository.provisional_sshable_container_test.repository_url` }}:latest",
+      "essential": true,
+      "links": [],
+      "systemControls": [],
+      "name": "default",
+      "linuxParameters": {
+        "initProcessEnabled": true
+      }
+    }
+  ],
+  "placementConstraints": [],
+  "memory": "512",
+  "taskRoleArn": "{{ tfstate `aws_iam_role.ecs_task_role_main_provisional_sshable_container_test.arn` }}",
+  "family": "provisional-sshable-container",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "volumes": []
+}

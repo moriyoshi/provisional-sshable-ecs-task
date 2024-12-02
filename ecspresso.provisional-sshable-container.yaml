@@ -1,0 +1,8 @@
+region: ap-northeast-1
+cluster: {{ must_env `ECS_CLUSTER` }}
+task_definition: taskdef.provisional-sshable-container.json
+service_definition: service.provisional-sshable-container.json
+plugins:
+  - name: tfstate
+    config:
+      path: terraform.tfstate

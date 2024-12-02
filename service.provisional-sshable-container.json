@@ -1,0 +1,15 @@
+{
+  "launchType": "FARGATE",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": [
+        "{{ tfstate `aws_subnet.internal.id` }}"
+      ],
+      "securityGroups": [
+        "{{ tfstate `aws_security_group.internal_default.id` }}"
+      ],
+      "assignPublicIp": "DISABLED"
+    }
+  },
+  "enableExecuteCommand": true
+}
