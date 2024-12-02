@@ -21,6 +21,10 @@ terraform: terraform-apply
 terraform-apply: .terraform
 	$(TERRAFORM) apply -auto-approve
 
+.PHONY: terraform-destroy
+terraform-destroy: .terraform
+	$(TERRAFORM) destroy
+
 .terraform:
 	$(TERRAFORM) init
 
